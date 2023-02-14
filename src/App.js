@@ -10,7 +10,6 @@ function App() {
 
   const [isLogin, setIsLogin] = useState(false);
   const loginForm = (email, pwd) => {
-
     //axios.post('api/auth', )
 
     if (email === "abc@naver.com" && pwd === "abcde123!") {

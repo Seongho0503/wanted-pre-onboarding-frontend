@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import axios from "axios";
 
 const LoginForm = ({ loginForm }) => {
   const [form, setForm] = useState({
@@ -10,7 +11,49 @@ const LoginForm = ({ loginForm }) => {
   const [isPossible, setIsPossible] = useState(false);
   const [email, setEmail] = useState("");
   const [pwd, setPwd] = useState("");
-      
+
+  // const loginCheck = async () => {
+  //   axios
+  //     .post("https://pre-onboarding-selection-task.shop/auth/signin", {
+  //       email: body.email,
+  //       password: body.pwd,
+  //     })
+  //     .then(function (res) {
+  //       console.log(res);
+  //     })
+  //     .catch(function (error) {
+  //       console.log(error);
+  //     });
+  // };
+
+  const loginCheck = () => {
+    let body = {
+      email: "abc@naver.com",
+      pwd: "abcde123!",
+    };
+    axios(
+      {
+        method: "post",
+        url: "https://pre-onboarding-selection-task.shop/auth/signin",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: JSON.stringify({
+          email: body.email,
+          password: body.pwd,
+        }),
+      },
+      { withCredentials: true }
+    ).then((res) => {
+      let token = res.data.token;
+      console.log(`token: ${token}`);
+    });
+  };
+
+  // .post("https://pre-onboarding-selection-task.shop/", body)
+  // .then((res) => {
+  //   console.log(res.data);
+  // });
   //이벤트 감지
   const handleChange = (e) => {
     formToggle();
@@ -63,12 +106,12 @@ const LoginForm = ({ loginForm }) => {
           <button
             disabled="disabled"
             data-testid="signin-button"
-            onClick={handleLogin}
+            onClick={loginCheck}
           >
             로그인
           </button>
         ) : (
-          <button data-testid="signin-button" onClick={handleLogin}>
+          <button data-testid="signin-button" onClick={loginCheck}>
             로그인
           </button>
         )}
