@@ -1,0 +1,21 @@
+.App {
+  text-align: center;
+}
+
+.LoginForm {
+  text-align: center;
+  padding: 100px;
+}
+
+.LoginForm input {
+  width: 500px;
+  height: 50px;
+  margin: 10px;
+}
+
+.LoginForm button {
+  width: 250px;
+  height: 50px;
+  margin: 20px;
+  cursor: pointer;
+}
