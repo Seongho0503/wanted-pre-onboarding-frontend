@@ -1,25 +1,24 @@
 import { useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import LoginForm from "./LoginForm";
+import LoginForm from "./pages/LoginForm";
+import SignupForm from "./pages/SighupForm";
 
 function App() {
-  // const [data, setData] = useState({
-  //   email: "",
-  //   pwd: "",
-  // });
-
+  const [token, setToken] = useState("");
   const [isLogin, setIsLogin] = useState(false);
   const loginForm = (email, pwd) => {
-    //axios.post('api/auth', )
-
     if (email === "abc@naver.com" && pwd === "abcde123!") {
       setIsLogin(true);
       console.log("로그인 성공");
     }
   };
   return (
-    <div>
-      <LoginForm loginForm={loginForm} />
+    <div className="App">
+      <Routes>
+        <Route path="/" element={<LoginForm loginForm={loginForm} /> } />
+        <Route path="/signup" element={<SignupForm />} />
+      </Routes>
     </div>
   );
 }

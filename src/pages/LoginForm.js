@@ -1,8 +1,11 @@
 import { useState } from "react";
-import "./App.css";
+import { useNavigate } from "react-router-dom";
+import "../App.css";
 import axios from "axios";
 
 const LoginForm = ({ loginForm }) => {
+  const navigate = useNavigate();
+
   const [form, setForm] = useState({
     email: "",
     pwd: "",
@@ -27,10 +30,6 @@ const LoginForm = ({ loginForm }) => {
   // };
 
   const loginCheck = () => {
-    let body = {
-      email: "abc@naver.com",
-      pwd: "abcde123!",
-    };
     axios(
       {
         method: "post",
@@ -39,13 +38,13 @@ const LoginForm = ({ loginForm }) => {
           "Content-Type": "application/json",
         },
         data: JSON.stringify({
-          email: body.email,
-          password: body.pwd,
+          email: form.email,
+          password: form.pwd,
         }),
       },
       { withCredentials: true }
     ).then((res) => {
-      let token = res.data.token;
+      let token = res.data.access_token;
       console.log(`token: ${token}`);
     });
   };
@@ -72,6 +71,11 @@ const LoginForm = ({ loginForm }) => {
       ? setPwd("8자리를 입력해주세요")
       : setPwd("올바른 비밀번호 형태입니다.");
     if (form.email.includes("@") && form.pwd.length > 8) setIsPossible(true);
+  };
+
+  // 회원 가입
+  const signupForm = () => {
+    navigate("/signup");
   };
 
   const handleLogin = () => {
@@ -115,7 +119,9 @@ const LoginForm = ({ loginForm }) => {
             로그인
           </button>
         )}
-        <button data-testid="signup-button">회원가입</button>
+        <button data-testid="signup-button" onClick={signupForm}>
+          회원가입
+        </button>
       </div>
     </div>
   );

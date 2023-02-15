@@ -19,3 +19,19 @@
   margin: 20px;
   cursor: pointer;
 }
+
+.SignupForm {
+  padding: 100px;
+}
+
+.SignupForm input {
+  margin: 10px;
+  width: 400px;
+  height: 40px;
+}
+
+.SignupForm button {
+  width: 400px;
+  margin-top: 10px;
+  height: 40px;
+}
