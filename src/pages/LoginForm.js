@@ -53,8 +53,9 @@ const LoginForm = ({ loginForm }) => {
       },
       { withCredentials: true }
     ).then((res) => {
-      let token = res.data.access_token;
-      console.log(`token: ${token}`);
+      let access_token = res.data.access_token;
+      localStorage.setItem("access_token", access_token);
+      console.log(`access_token: ${access_token}`);
       if (res.request.status === 200) {
         navigate("/todo");
       }

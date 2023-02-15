@@ -35,3 +35,13 @@
   margin-top: 10px;
   height: 40px;
 }
+
+.TodoList {
+  padding: 20px;
+  margin: 20px;
+}
+
+.TodoItems {
+  padding: 5px;
+  margin-bottom: 15px;
+}

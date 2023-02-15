@@ -36,7 +36,7 @@ const SignupForm = () => {
       //console.log(res.data); // access_token 있음
       console.log(res.request);
       console.log(typeof res.request.status); // 서버 ok 숫자였다 number
-      localStorage.setItem("access-token", token);
+  
       console.log("로컬스토리지", localStorage);
       if (res.request.status === 201) {
         navigate("/");
