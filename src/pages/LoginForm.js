@@ -6,6 +6,15 @@ import axios from "axios";
 const LoginForm = ({ loginForm }) => {
   const navigate = useNavigate();
 
+  // if (!localStorage.get("token")) {
+  //   () => <navigate to="/" />;
+  // }
+
+  // return (
+  //   // 로그인돼있을때
+  //   () => <navigate to="todo" />
+  // );
+
   const [form, setForm] = useState({
     email: "",
     pwd: "",
@@ -46,6 +55,9 @@ const LoginForm = ({ loginForm }) => {
     ).then((res) => {
       let token = res.data.access_token;
       console.log(`token: ${token}`);
+      if (res.request.status === 200) {
+        navigate("/todo");
+      }
     });
   };
 
