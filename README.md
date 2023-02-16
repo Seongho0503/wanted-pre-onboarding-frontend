@@ -4,6 +4,11 @@ nelify 배포
 ```
 https://gentle-toffee-c840b4.netlify.app/
 
+# 샘플 계정
+```
+email : wanted@naver.com
+password : 123456789
+```
 
 # 실행 방법
 ```
