@@ -11,6 +11,13 @@ npm i
 npm start
 ```
 
+# 기술 스택
+```
+라우팅 : react-router-dom
+http통신 : axios
+CRA 설정 : @craco/craco
+```
+
 # 구현 화면
 ![todolist](https://user-images.githubusercontent.com/86208370/219224053-1baf50f9-5fc9-47ba-904c-f50bd1a12a61.gif)
 ![todolist-1](https://user-images.githubusercontent.com/86208370/219224233-9d8f808c-87dc-4628-be86-526f4b00ab71.gif)
