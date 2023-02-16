@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import LoginForm from "./pages/LoginForm";
-import SignupForm from "./pages/SighupForm";
+import LoginForm from "./component/auth/LoginForm";
+import SignupForm from "./component/auth/SignupForm";
 import TodoList from "./pages/TodoList";
 
 function App() {

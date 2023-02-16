@@ -11,7 +11,7 @@ const TodoList = () => {
 
   const [data, setData] = useState({
     id: 0,
-    todo: "",
+    work: "",
     isCompleted: false,
   });
   const handleChange = (e) => {
@@ -36,6 +36,9 @@ const TodoList = () => {
       },
       { withCredentials: true }
     ).then((res) => {
+      setData({
+        work: "",
+      });
       getTodos();
       console.log(res.data);
     });
