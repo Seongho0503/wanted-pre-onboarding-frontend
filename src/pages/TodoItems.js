@@ -12,6 +12,7 @@ const TodoItems = ({
   const [isEdit, setIsEdit] = useState(false);
   // textarea의 input을 핸들링 (수정 상태일 떄)  // 초기값을 기본 값으로 세팅
   const [localContent, setLocalContent] = useState(todo);
+  const [ischecked, setIschecked] = useState(false);
   const toggleIsEdit = () => setIsEdit(!isEdit);
   const handleQuitEdit = () => {
     // 수정 상태에서 나간다.
@@ -23,25 +24,26 @@ const TodoItems = ({
     updateTodo(id, localContent, isCompleted);
     toggleIsEdit();
   };
+  const onCheck = (e) => {
+    if (e.target.name === "isCompleted") {
+      //console.log(!ischecked);
+      setIschecked(e.target.checked);
+      updateTodo(id, localContent, ischecked);
+    }
+  };
 
   const eventhandler = (e) => {
     setLocalContent(e.target.value);
-    if (e.target.name === "check") {
-      setData({
-        isCompleted: true,
-      });
-      updateTodo(id, localContent, isCompleted);
-    }
   };
   return (
     <div className="TodoItems">
       <li>
         <label>
           <input
-            name="check"
+            name="isCompleted"
             type="checkbox"
-            value={isCompleted}
-            onChange={eventhandler}
+            checked={isCompleted}
+            onChange={onCheck}
           />
           {isEdit ? (
             <>

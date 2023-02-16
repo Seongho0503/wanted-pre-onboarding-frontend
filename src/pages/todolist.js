@@ -60,7 +60,7 @@ const TodoList = () => {
   };
 
   // 할 일 수정
-  const updateTodo = async (id, todo, isCompleted) => {
+  const updateTodo = async (id, todo, ischecked) => {
     await axios(
       {
         method: "PUT",
@@ -71,7 +71,7 @@ const TodoList = () => {
         },
         data: JSON.stringify({
           todo: todo,
-          isCompleted: isCompleted,
+          isCompleted: ischecked,
         }),
       },
       { withCredentials: true }

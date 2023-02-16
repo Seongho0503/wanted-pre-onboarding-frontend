@@ -80,7 +80,7 @@ const LoginForm = ({ loginForm }) => {
     !form.email.includes("@")
       ? setEmail("@을 포함시켜주세요")
       : setEmail("올바른 이메일 형식입니다");
-    form.pwd.length < 8
+    form.pwd.length < 7
       ? setPwd("8자리를 입력해주세요")
       : setPwd("올바른 비밀번호 형태입니다.");
     if (form.email.includes("@") && form.pwd.length > 8) setIsPossible(true);
