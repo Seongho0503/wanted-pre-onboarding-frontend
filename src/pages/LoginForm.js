@@ -83,7 +83,7 @@ const LoginForm = ({ loginForm }) => {
     form.pwd.length < 7
       ? setPwd("8자리를 입력해주세요")
       : setPwd("올바른 비밀번호 형태입니다.");
-    if (form.email.includes("@") && form.pwd.length > 8) setIsPossible(true);
+    if (form.email.includes("@") && form.pwd.length > 7) setIsPossible(true);
   };
 
   // 회원 가입
