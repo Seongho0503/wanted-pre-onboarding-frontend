@@ -1,3 +1,10 @@
+# 배포 환경
+```
+nelify 배포
+```
+https://gentle-toffee-c840b4.netlify.app/
+
+
 # 실행 방법
 ```
 npm i 
