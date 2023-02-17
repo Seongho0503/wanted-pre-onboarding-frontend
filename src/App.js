@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import LoginForm from "./component/auth/LoginForm";
+import LoginForm from "./component/auth/SignInForm";
 import SignupForm from "./component/auth/SignupForm";
 import TodoList from "./pages/TodoList";
 
