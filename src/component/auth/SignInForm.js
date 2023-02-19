@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../App.css";
-import axios from "axios";
 import { authApi } from "../../apis/api/auth";
 
 const LoginForm = ({ loginForm }) => {
@@ -51,20 +50,13 @@ const LoginForm = ({ loginForm }) => {
   const loginCheck = async () => {
     const res = await authApi.signin(form.email, form.pwd);
     if (res.request.status === 200) {
+      // status: 200 OK
+      //console.log(res);
+      let access_token = res.data.access_token;
+      localStorage.setItem("access_token", access_token);
       navigate("/todo");
     }
   };
-
-  // ).then((res) => {
-  //   let access_token = res.data.access_token;
-  //   localStorage.setItem("access_token", access_token);
-  //   console.log(`access_token: ${access_token}`);
-  //     if (res.request.status === 200) {
-  //       navigate("/todo");
-  //     }
-  //   });
-  // };
-
 
   // 리팩토링 전 레거시 코드
   // const loginCheck = () => {

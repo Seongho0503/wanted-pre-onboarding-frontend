@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { authApi } from "../../apis/api/auth";
 
 const SignupForm = () => {
   const navigate = useNavigate();
@@ -46,34 +47,45 @@ const SignupForm = () => {
     } else setIsValidPwd(true);
   };
 
-  const signup = () => {
-    axios(
-      {
-        method: "post",
-        url: "https://pre-onboarding-selection-task.shop/auth/signup",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        data: JSON.stringify({
-          email: form.email,
-          password: form.pwd,
-        }),
-      },
-      { withCredentials: true }
-    ).then((res) => {
-      let token = res.data.access_token;
-      console.log(`token: ${token}`);
-      //console.log(res.data); // access_token 있음
-      console.log(res.request);
-      console.log(typeof res.request.status); // 서버 ok 숫자였다 number
-
-      console.log("로컬스토리지", localStorage);
-      if (res.request.status === 201) {
-        navigate("/");
-      }
-      //console.log(res.data);
-    });
+  //회원가입 api
+  const signupCheck = async () => {
+    const res = await authApi.signup(form.email, form.pwd);
+    if (res.request.status === 201) {
+      //status: 201 Created
+      //console.log(res);
+      navigate("/");
+    }
   };
+
+  // 리팩토링 전 레거시 코드
+  // const signup = () => {
+  //   axios(
+  //     {
+  //       method: "post",
+  //       url: "https://pre-onboarding-selection-task.shop/auth/signup",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       data: JSON.stringify({
+  //         email: form.email,
+  //         password: form.pwd,
+  //       }),
+  //     },
+  //     { withCredentials: true }
+  //   ).then((res) => {
+  //     let token = res.data.access_token;
+  //     console.log(`token: ${token}`);
+  //     //console.log(res.data); // access_token 있음
+  //     console.log(res.request);
+  //     console.log(typeof res.request.status); // 서버 ok 숫자였다 number
+
+  //     console.log("로컬스토리지", localStorage);
+  //     if (res.request.status === 201) {
+  //       navigate("/");
+  //     }
+  //     //console.log(res.data);
+  //   });
+  // };
 
   return (
     <div className="SignupForm">
@@ -96,7 +108,7 @@ const SignupForm = () => {
           ></input>
         </div>
       </div>
-      <button onClick={signup} disabled={isDisabled}>
+      <button onClick={signupCheck} disabled={isDisabled}>
         회원 가입
       </button>
       <div>
